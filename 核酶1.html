@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 RNA catalysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        .gradient-header {
+            /* background: linear-gradient(135deg, #3b82f6, #8b5cf6); */
+            background: #158CBA;
+            color: white;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            /* background: linear-gradient(90deg, #3b82f6, #8b5cf6); */
+            background: #158CBA;
+            border-radius: 3px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-header {
+            /* background: linear-gradient(90deg, #3b82f6, #8b5cf6); */
+            background: #158CBA;
+            color: white;
+            padding: 16px 24px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+        
+        .timeline:before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #cbd5e1;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+        }
+        
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: -32px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #158CBA;;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #158CBA;
+        }
+        
+        .speaker-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .speaker-card:hover {
+            border-color: #158CBA;
+            box-shadow: 0 4px 6px -1px rgba(147, 197, 253, 0.2), 0 2px 4px -1px rgba(147, 197, 253, 0.06);
+        }
+        
+        .btn-primary {
+            /* background: linear-gradient(90deg, #3b82f6, #8b5cf6); */
+            background: #158CBA;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
+        }
+        
+        .sponsor-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .sponsor-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.speaker-card').each(function() {
+        const $img = $(this).find('img');
+        $img.wrap('<div class="h-48 flex items-center justify-center"></div>');
+        $(this).addClass('grid grid-cols-[136px,1fr] items-start gap-4');
+        // 注意：原有的flex类需要移除，因为grid和flex是互斥的
+        $(this).removeClass('flex items-start');
+        });
+    });
+    </script>
+    <!-- 页头 -->
+    <header class="gradient-header py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">2025 RNA 催化会议</h1>
+                <p class="text-xl md:text-2xl font-light opacity-90 mb-8">2025 RNA catalysis</p>
+                
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 text-left max-w-2xl mx-auto border-l-4 border-white">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-university mr-3"></i>
+                        <span>Guangzhou International Bio Island, Guangzhou, China</span>
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-calendar-alt mr-3"></i>
+                        <span>November 14 - 16, 2025</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#registration" class="bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-full font-medium transition">
+                            <i class="fas fa-ticket-alt mr-2"></i>Register
+                        </a>
+                        <a href="#program" class="bg-transparent border border-white hover:bg-white hover:bg-opacity-10 px-4 py-2 rounded-full font-medium transition">
+                            <i class="fas fa-file-alt mr-2"></i>Check the schedule
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 - 改为垂直布局 -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <div class="flex flex-col gap-8">
+            <!-- 会议介绍 -->
+            <section id="introduction" class="mb-16">
+                <h2 class="section-title text-2xl font-bold">Conference Introduction</h2>
+                <p class="mb-4 text-gray-700">In recent years, the field of RNA catalysis has witnessed considerable progress.  Although the pace of discovery of new ribozymes has slowed, new self-cleaving RNA species are still emerging, but this leaves open questions about when can a self-cleaving RNA be considered a ribozyme ? There are structures of many ribozymes now, and detailed mechanisms for some. Yet not all ribozymes crystallise in an active form, and for some the catalytic mechanism is still unclear. In vitro selection is expanding the chemical range of RNA catalysis, and structures and mechanisms are beginning to emerge. Can we perceive common mechanistic themes in different ribozymes ? </p>
+                <p class="mb-4 text-gray-700">Considerable time has elapsed since the last conference dedicated to this area. Thus we feel the time is right to convene an opportunity to share the latest findings and discuss current issues. The conference will have a strong focus on discussion, where we hope to resolve matters of current debate.</p>
+                <p class="mb-4 text-gray-700">Our groups are committed to research in RNA catalysis and have regularly organized small-scale meetings in South China to discuss the origin, structure, and mechanisms of ribozymes. Building on this foundation, we are delighted to announce that a discussion symposium will be held on November 15–16, 2025, at the Guangzhou International Bio Island. The organizing committee of this symposium includes Prof. David Lilley FRS, Dr. Lin Huang, Dr. Zhichao Miao, Prof. Philipp Kapranov, and we are especially pleased to have invited Academician Erwei Song. We sincerely invite renowned international experts to join us in exploring new opportunities for ribozyme development and advancing the field to new heights.</p>
+                <p class="mb-4 text-gray-700">The main topics of the symposium will include (these could be expanded – we are open to suggestions) :</p>
+                <p class="mb-4 text-gray-700">1. The discovery of ribozymes in contemporary biospheres: Have we identified all natural self-splicing ribozymes?<br>
+                2. High-throughput screening methods for novel functional ribozymes.<br>
+                3. The structure and catalytic mechanisms of known ribozymes and their functions in living organisms.<br>
+                4. The connection between ribozymes and riboswitches, and the role of small molecules in RNA catalysis.<br>
+                5. Catalysis beyond phosphotransfer by ribozymes (especially recent developments in methylation/alkylation). The potential existence of such ribozymes in contemporary cells, and new detection methods.<br>
+                6. New perspectives on RNA catalysis in the origin of life.</p>
+                <p class="mb-4 text-gray-700">We look forward to exploring and discussing cutting-edge issues in RNA catalysis ,and driving further advancements in this field.</p>
+            </section>
+            
+           <!-- 组织委员会 - 添加照片 -->
+            <section id="organizers" class="mb-16">
+                <h2 class="section-title text-2xl font-bold">Organizing Committee</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- David Lilley -->
+                    <div class="card text-center p-6">
+                        <img src="./image/David Lilley.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover">
+                        <h3 class="text-xl font-bold mb-1">David Lilley</h3>
+                        <p class="text-gray-600">University of Dundee, UK</p>
+                    </div>
+                    
+                    <!-- Lin Huang -->
+                    <div class="card text-center p-6">
+                        <img src="./image/Lin Huang.jpg" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover">
+                        <h3 class="text-xl font-bold mb-1">Lin Huang</h3>
+                        <p class="text-gray-600">Sun Yat-sen Memorial Hospital, China</p>
+                    </div>
+                    
+                    <!-- Zhichao Miao -->
+                    <div class="card text-center p-6">
+                        <img src="./image/Zhichao Miao.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover">
+                        <h3 class="text-xl font-bold mb-1">Zhichao Miao</h3>
+                        <p class="text-gray-600">Guangzhou Laboratory, Guangzhou Medical University, China</p>
+                    </div>
+                    
+                    <!-- Philipp Kapranov -->
+                    <div class="card text-center p-6">
+                        <img src="./image/Philipp Kapranov.jpg" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover">
+                        <h3 class="text-xl font-bold mb-1">Philipp Kapranov</h3>
+                        <p class="text-gray-600">Xiamen University, China</p>
+                    </div>
+                    
+                    <!-- Erwei Song -->
+                    <div class="card text-center p-6">
+                        <img src="./image/Erwei Song.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover">
+                        <h3 class="text-xl font-bold mb-1">Erwei Song</h3>
+                        <p class="text-gray-600">Sun Yat-sen Memorial Hospital, China</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 演讲嘉宾 - 添加照片 -->
+            <section id="speakers" class="mb-16">
+                <h2 class="section-title text-2xl font-bold">Invited Speakers</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Eric Westhof -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Eric Westhof.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Eric Westhof</h3>
+                            <p class="text-gray-600">University of Strasbourg, France</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Darrin York -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Darrin York.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Darrin York</h3>
+                            <p class="text-gray-600">Rutgers University, US</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Joseph Piccirilli -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Joseph Piccirilli.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Joseph Piccirilli</h3>
+                            <p class="text-gray-600">University of Chicago, US</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Philip Bevilacqua -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Philip Bevilacqua.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Philip Bevilacqua</h3>
+                            <p class="text-gray-600">Penn State University, US</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Andrej Luptak -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Andrej Luptak.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Andrej Luptak</h3>
+                            <p class="text-gray-600">University of California, Irvine, US</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ronald Micura -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Ronald Micura.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Ronald Micura</h3>
+                            <p class="text-gray-600">University of Innsbruck, Austria</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Claudia Höbartner -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Claudia Höbartner.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Claudia Höbartner</h3>
+                            <p class="text-gray-600">University of Würzburg, Germany</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Alastair Murchie -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Alastair Murchie.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Alastair Murchie</h3>
+                            <p class="text-gray-600">Fudan University, China</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Yaoqi Zhou -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Yaoqi Zhou.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Yaoqi Zhou</h3>
+                            <p class="text-gray-600">Shenzhen Bay Laboratory, China</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Aiming Ren -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Aiming Ren.jpg" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Aiming Ren</h3>
+                            <p class="text-gray-600">Zhejiang University, China</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Yijin Liu -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Yijin Liu.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Yijin Liu</h3>
+                            <p class="text-gray-600">Nankai University, China</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Hanyang Yu -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Hanyang Yu.jpg" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Hanyang Yu</h3>
+                            <p class="text-gray-600">Nanjing University, China</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Liang Xu -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Liang Xu.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Liang Xu</h3>
+                            <p class="text-gray-600">Sun Yat-sen University, China</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Don Yin -->
+                    <div class="speaker-card flex items-start">
+                        <img src="./image/Don Yin.png" alt="David Lilley" class="w-34 h-48 mx-auto mb-4 object-cover object-top" style="aspect-ratio: 34/48">
+                        <div>
+                            <h3 class="font-bold text-blue-600 mb-1">Don Yin</h3>
+                            <p class="text-gray-600">Sun Yat-sen Memorial Hospital, China</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 会议日程 -->
+            <section id="program" class="mb-16">
+                <h2 class="section-title text-2xl font-bold">Meeting Schedule</h2>
+                <div class="card overflow-hidden">
+                    <div class="card-header font-bold">November 14th - 16th, 2025</div>
+                    <div class="p-6">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4 class="font-bold text-lg mb-2">Day 1: Friday, November 14th</h4>
+                                <p class="mb-1">08:00-09:00 - Registration and welcome tea break</p>
+                                <p class="mb-1">09:00-10:30 - The opening ceremony and keynote speeches</p>
+                                <p class="mb-1">10:30-11:00 - Tea break and communication</p>
+                                <p class="mb-1">11:00-12:30 - Frontier Research on RNA Catalysis (Session One)</p>
+                                <p class="mb-1">12:30-14:00 - Lunch</p>
+                                <p class="mb-1">14:00-15:30 - Ribozyme Structure and Mechanism (Session One）</p>
+                                <p class="mb-1">15:30-16:00 - Tea break and communication</p>
+                                <p class="mb-1">16:00-18:00 - Poster display and communication</p>
+                                <p class="mb-1">18:30-20:30 - Welcome Dinner Party</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-6">
+                            <button class="btn-primary">
+                                <i class="fas fa-download mr-2"></i>Download the complete schedule
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 赞助商 -->
+            <!-- <section id="sponsors" class="mb-16">
+                <h2 class="section-title text-2xl font-bold">赞助商</h2>
+                <div class="flex flex-wrap justify-center items-center gap-8 my-8">
+                    <img src="https://via.placeholder.com/200x80?text=MERCK" alt="Merck" class="sponsor-logo max-h-16">
+                    <img src="https://via.placeholder.com/200x80?text=PROMEGA" alt="Promega" class="sponsor-logo max-h-16">
+                    <img src="https://via.placeholder.com/200x80?text=SEASKYBIO" alt="SeaskyBio" class="sponsor-logo max-h-16">
+                </div>
+                
+                <div class="card overflow-hidden">
+                    <div class="card-header font-bold">成为赞助商</div>
+                    <div class="p-6">
+                        <p class="mb-4">我们诚邀相关企业参与本次会议的赞助，展示贵公司的最新产品和技术，与顶尖科学家建立联系。</p>
+                        <p class="mb-6">请联系我们获取赞助方案详情：</p>
+                        <div class="text-center">
+                            <a href="mailto:sponsors@frcbs-tsinghua.org" class="inline-block border border-blue-500 text-blue-500 hover:bg-blue-50 px-6 py-2 rounded-full transition">
+                                <i class="fas fa-envelope mr-2"></i>赞助咨询
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            
+            <!-- 注册信息 -->
+            <section id="registration" class="mb-8">
+                <h2 class="section-title text-2xl font-bold">Admission Instructions</h2>
+                <div class="card overflow-hidden">
+                    <div class="card-header font-bold"></div>
+                    <div class="p-6">
+                        <p>The symposium will be held at the Mulian Zhuang Hotel on Guangzhou International Bio Island.  Bioisland is a tranquil location surrounded by the Pearl river. Both the conference meeting room and accommodation will be held within the same building. 
+                        <br>
+                        The organizers have already entered the information of all experts into the system to ensure a smooth and efficient check-in process. On the day of the event, please proceed to the registration desk to complete the check-in procedures.
+                    </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 联系我们 -->
+            <section id="contact" class="mb-8">
+                <h2 class="section-title text-2xl font-bold">Contact Us</h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="card overflow-hidden">
+                        <div class="p-6 border-t-4" style="border-top-color: #158CBA;">
+                            <h4 class="font-bold flex items-center mb-3">
+                                <i class="fas fa-user mr-2" style="color: #158CBA;" aria-hidden="true"></i>
+                                Registration and meeting coordination
+                            </h4>
+                            <p class="mb-1">xxx</p>
+                            <p class="mb-1 flex items-center">
+                                <i class="fas fa-phone mr-2 text-gray-500"></i>
+                                +86 xxxxx
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-envelope mr-2 text-gray-500"></i>
+                                xxxxxxx
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card overflow-hidden">
+                        <div class="p-6 border-t-4" style="border-top-color: #158CBA;">
+                            <h4 class="font-bold flex items-center mb-3">
+                                <i class="fas fa-money-bill mr-2" style="color: #158CBA;" aria-hidden="true"></i>
+                                Payment, refund and invoice
+                            </h4>
+                            <p class="mb-1">xxxx</p>
+                            <p class="mb-1 flex items-center">
+                                <i class="fas fa-phone mr-2 text-gray-500"></i>
+                                +86 xxxxx
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fas fa-envelope mr-2 text-gray-500"></i>
+                                xxxxxxx
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-gray-300 py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-white font-bold mb-4">Organizing unit</h3>
+                    <p class="mb-2">Guangzhou Laboratory and RNAcentre and Sun Yat-sen University</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-4"></h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-gray-800 hover:text-white transition">
+                            <i class="fab fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-gray-800 hover:text-white transition">
+                            <i class="fab fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:bg-gray-800 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+            
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p class="mb-2">© 2025 Sun Yat-sen University · All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
