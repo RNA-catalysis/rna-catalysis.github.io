@@ -61,7 +61,7 @@
             border-top-right-radius: 12px;
         }
         
-        .timeline {
+        /* .timeline {
             position: relative;
             padding-left: 32px;
         }
@@ -92,8 +92,32 @@
             background-color: #158CBA;;
             border: 3px solid white;
             box-shadow: 0 0 0 2px #158CBA;
+        } */
+        .timeline {
+            position: relative;
+            padding-left: 48px; /* 原来是 32px，给图标多留空间 */
+            overflow: visible; /* 关键：防止图标被裁切 */
         }
-        
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+            overflow: visible; /* 防止被父元素隐藏 */
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: -40px; /* 图标再往左一点 */
+            top: 6px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #158CBA;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #158CBA;
+            z-index: 2; /* 确保在时间线之上 */
+        }
         .speaker-card {
             border: 1px solid #e2e8f0;
             border-radius: 8px;
